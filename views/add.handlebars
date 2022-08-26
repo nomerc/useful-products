@@ -1,0 +1,103 @@
+<section id="add" class="container">
+  <div class="form-wrap">
+    {{#if id}}
+      <h1>Edit Product</h1>
+    {{else}}
+      <h1>Add Product</h1>
+    {{/if}}
+
+    {{#each errors}}
+      <div class="error">
+        <p>{{text}}</p>
+      </div>
+    {{/each}}
+    <form action="/products/addOrUpdate" method="POST">
+      <input class="invisible" type="text" name="id" value="{{id}}" />
+      <div class="input-group">
+        <label for="name">Product name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="input-box"
+          maxlength="100"
+          placeholder="eg.Apples, Eggs, Chicken breasts"
+          value="{{name}}"
+        />
+      </div>
+      <div class="input-group">
+        <label for="calories">Calories/100g</label>
+        <input
+          type="number"
+          step="0.01"
+          name="calories"
+          id="calories"
+          class="input-box"
+          placeholder="eg. 50, 200, 500"
+          maxlength="100"
+          value={{calories}}
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="proteins">Proteins/100g</label>
+        <input
+          type="number"
+          step="0.01"
+          name="proteins"
+          id="proteins"
+          class="input-box"
+          placeholder="eg. 12, 23, 50"
+          maxlength="100"
+          value={{proteins}}
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="fats">Fats/100g</label>
+        <input
+          type="number"
+          step="0.01"
+          name="fats"
+          id="fats"
+          class="input-box"
+          placeholder="eg. 10, 32, 47"
+          maxlength="100"
+          value={{fats}}
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="carbohydrates">Carbohydrates/100g</label>
+        <input
+          type="number"
+          step="0.01"
+          name="carbohydrates"
+          id="carbohydrates"
+          class="input-box"
+          placeholder="eg. 12, 20, 45"
+          maxlength="100"
+          value={{carbohydrates}}
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="description">Product Description</label>
+        <textarea
+          name="description"
+          id="description"
+          class="input-box"
+          placeholder="Enter small decription of the product"
+          rows="10"
+        >{{description}}</textarea>
+      </div>
+
+      {{#if id}}
+        <input type="submit" value="Save Product" class="btn btn-reverse" />
+      {{else}}
+        <input type="submit" value="Add Product" class="btn btn-reverse" />
+      {{/if}}
+
+    </form>
+  </div>
+</section>
